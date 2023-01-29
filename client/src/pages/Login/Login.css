@@ -1,0 +1,44 @@
+.loginForm {
+  width: 450px;
+  margin: 0px auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.ant-form-item-control-input-content {
+  text-align: center;
+  width: 400px;
+}
+
+/* .loginForm-register {
+  text-align: right;
+} */
+
+.loginForm-account {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loginForm-account-span {
+  color: #1677ff;
+}
+
+/* .loginForm-id {
+  text-align: right;
+}
+.loginForm-password {
+  text-align: right;
+} */
+
+.logo {
+  width: 120px;
+}
+.loginForm-header {
+  text-align: center;
+}
+
+.loginInput {
+  margin-bottom: 30px;
+}
