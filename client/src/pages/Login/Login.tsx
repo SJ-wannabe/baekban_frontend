@@ -3,6 +3,7 @@ import React from 'react';
 import './Login.css';
 import {LockOutlined, UserOutlined} from '@ant-design/icons';
 import {Button, Form, Input, Card} from 'antd';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 // import logo from '';
@@ -76,17 +77,10 @@ function Login() {
             </Form.Item>
             <Form.Item>
               <div className="loginForm-account">
-                <a className="loginForm-register" href="">
-                  회원 가입
-                </a>
+                <Link to="/register">회원 가입</Link>
+
                 <div>
-                  <a className="login-form-forgot loginForm-id" href="">
-                    아이디
-                  </a>
-                  <span className="loginForm-account-span"> / </span>
-                  <a className="login-form-forgot loginForm-password" href="">
-                    <span> 비밀번호 찾기</span>
-                  </a>
+                  <Link to="/findAccount">아이디 / 비밀번호 찾기</Link>
                 </div>
               </div>
             </Form.Item>

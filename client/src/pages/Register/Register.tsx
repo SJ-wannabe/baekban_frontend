@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Register.css';
-import {Button, Form, Input, Select, DatePicker, Card} from 'antd';
+import {Button, Form, Input, Select, DatePicker, Card, Col} from 'antd';
 import styled from 'styled-components';
 
 const RegisterStyleCard = styled(Card)`
@@ -129,7 +129,9 @@ function Register() {
           <Input />
         </Form.Item>
         <Form.Item name="date-picker" label="생년월일" {...config}>
-          <DatePicker />
+          <Col span={8}>
+            <DatePicker />
+          </Col>
         </Form.Item>
 
         <Form.Item
@@ -177,9 +179,11 @@ function Register() {
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Register
-          </Button>
+          <Col span={1}>
+            <Button type="primary" htmlType="submit">
+              Register
+            </Button>
+          </Col>
         </Form.Item>
       </Form>
     </RegisterStyleCard>
