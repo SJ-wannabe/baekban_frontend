@@ -1,0 +1,9 @@
+.ant-card-body {
+  width: 100%;
+}
+
+:where(.css-dev-only-do-not-override-1n7nwfa)[class^='ant-tabs']
+  [class^='ant-tabs'] {
+  box-sizing: border-box;
+  width: 100%;
+}
