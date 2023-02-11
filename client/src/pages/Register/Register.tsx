@@ -15,6 +15,11 @@ const RegisterStyleCard = styled(Card)`
   box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.6);
 `;
 
+const RegisterStyleFormItem = styled(Form.Item)`
+  margin-top: 10px;
+  margin-bottom: 30px;
+`;
+
 const formItemLayout = {
   labelCol: {
     xs: {span: 12},
@@ -80,15 +85,15 @@ function Register() {
         style={{width: 600}}
         scrollToFirstError
       >
-        <Form.Item
+        <RegisterStyleFormItem
           name="userid"
           label="아이디"
           rules={[{required: true, message: '아이디를 입력해주세요!'}]}
         >
           <Input />
-        </Form.Item>
+        </RegisterStyleFormItem>
 
-        <Form.Item
+        <RegisterStyleFormItem
           name="password"
           label="비밀번호"
           rules={[
@@ -100,9 +105,9 @@ function Register() {
           hasFeedback
         >
           <Input.Password />
-        </Form.Item>
+        </RegisterStyleFormItem>
 
-        <Form.Item
+        <RegisterStyleFormItem
           name="confirm"
           label="비밀번호 재확인"
           dependencies={['password']}
@@ -125,22 +130,22 @@ function Register() {
           ]}
         >
           <Input.Password />
-        </Form.Item>
+        </RegisterStyleFormItem>
 
-        <Form.Item
+        <RegisterStyleFormItem
           name="name"
           label="이름"
           rules={[{required: true, message: '이름을 입력해주세요!'}]}
         >
           <Input />
-        </Form.Item>
-        <Form.Item name="date-picker" label="생년월일" {...config}>
+        </RegisterStyleFormItem>
+        <RegisterStyleFormItem name="date-picker" label="생년월일" {...config}>
           {/* <Col span={8}> */}
           <DatePicker onChange={onChange} style={{width: 400}} />
           {/* </Col> */}
-        </Form.Item>
+        </RegisterStyleFormItem>
 
-        <Form.Item
+        <RegisterStyleFormItem
           name="email"
           label="이메일"
           rules={[
@@ -155,16 +160,16 @@ function Register() {
           ]}
         >
           <Input />
-        </Form.Item>
-        <Form.Item
+        </RegisterStyleFormItem>
+        <RegisterStyleFormItem
           name="phoneNumber"
           label="휴대폰 번호"
           rules={[{required: true, message: '휴대폰 번호를 입력해주세요!'}]}
         >
           <Input type="number" style={{width: '100%'}} />
-        </Form.Item>
+        </RegisterStyleFormItem>
 
-        <Form.Item
+        <RegisterStyleFormItem
           name="businessRegistrationNumber"
           label="사업자 등록 번호"
           rules={[
@@ -172,15 +177,15 @@ function Register() {
           ]}
         >
           <Input type="number" />
-        </Form.Item>
+        </RegisterStyleFormItem>
 
-        <Form.Item {...tailFormItemLayout}>
+        <RegisterStyleFormItem {...tailFormItemLayout}>
           <Col span={1}>
             <Button type="primary" htmlType="submit">
               Register
             </Button>
           </Col>
-        </Form.Item>
+        </RegisterStyleFormItem>
       </Form>
     </RegisterStyleCard>
   );
