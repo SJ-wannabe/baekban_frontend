@@ -1,19 +1,19 @@
 import React from 'react';
 
+import {Button, Form, Input, DatePicker, Card, Col} from 'antd';
+import type {DatePickerProps} from 'antd';
+import axios from 'axios';
 import './Register.css';
-import {Button, Form, Input, Select, DatePicker, Card, Col} from 'antd';
 import styled from 'styled-components';
 
 const RegisterStyleCard = styled(Card)`
   display: flex;
   width: 650px;
-  height: 635px;
+  height: 600px;
   margin: 30px auto;
 
   box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.6);
 `;
-
-const {Option} = Select;
 
 const formItemLayout = {
   labelCol: {
@@ -45,21 +45,27 @@ const tailFormItemLayout = {
   },
 };
 
+let birth = '0';
+
+const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+  console.log(date, dateString);
+  birth = dateString;
+};
+
 function Register() {
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
-  };
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select style={{width: 70}}>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
-  );
+    const data = {
+      ...values,
+      birth,
+    };
+    axios.post('http://localhost:3000/users', data).then(res => {
+      console.log(res.data);
+    });
+  };
 
   return (
     <RegisterStyleCard>
@@ -75,7 +81,7 @@ function Register() {
         scrollToFirstError
       >
         <Form.Item
-          name="id"
+          name="userid"
           label="아이디"
           rules={[{required: true, message: '아이디를 입력해주세요!'}]}
         >
@@ -129,21 +135,11 @@ function Register() {
           <Input />
         </Form.Item>
         <Form.Item name="date-picker" label="생년월일" {...config}>
-          <Col span={8}>
-            <DatePicker />
-          </Col>
+          {/* <Col span={8}> */}
+          <DatePicker onChange={onChange} style={{width: 400}} />
+          {/* </Col> */}
         </Form.Item>
 
-        <Form.Item
-          name="gender"
-          label="성별"
-          rules={[{required: true, message: '성별을 선택해주세요!'}]}
-        >
-          <Select placeholder="select your gender">
-            <Option value="male">남자</Option>
-            <Option value="female">여자</Option>
-          </Select>
-        </Form.Item>
         <Form.Item
           name="email"
           label="이메일"
@@ -161,21 +157,21 @@ function Register() {
           <Input />
         </Form.Item>
         <Form.Item
-          name="phone"
+          name="phoneNumber"
           label="휴대폰 번호"
           rules={[{required: true, message: '휴대폰 번호를 입력해주세요!'}]}
         >
-          <Input addonBefore={prefixSelector} style={{width: '100%'}} />
+          <Input type="number" style={{width: '100%'}} />
         </Form.Item>
 
         <Form.Item
-          name="companyRegisterNumber"
+          name="businessRegistrationNumber"
           label="사업자 등록 번호"
           rules={[
             {required: true, message: '사업자 등록 번호를 입력해주세요!'},
           ]}
         >
-          <Input />
+          <Input type="number" />
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>
