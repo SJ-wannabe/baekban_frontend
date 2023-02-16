@@ -3,6 +3,7 @@ import React from 'react';
 import {Button, Form, Input, DatePicker, Card, Col} from 'antd';
 import type {DatePickerProps} from 'antd';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 import './Register.css';
 import styled from 'styled-components';
 
@@ -58,6 +59,7 @@ const onChange: DatePickerProps['onChange'] = (date, dateString) => {
 };
 
 function Register() {
+  const navigate = useNavigate();
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
@@ -67,9 +69,15 @@ function Register() {
       ...values,
       birth,
     };
-    axios.post('http://localhost:3000/users', data).then(res => {
-      console.log(res.data);
-    });
+    axios
+      .post('http://localhost:3000/users', data)
+      .then(res => {
+        console.log(res.data);
+        navigate('/');
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   return (
