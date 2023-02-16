@@ -4,7 +4,7 @@ import './Login.css';
 import {LockOutlined, UserOutlined} from '@ant-design/icons';
 import {Button, Form, Input, Card} from 'antd';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
 // import logo from '';
@@ -35,7 +35,9 @@ const LoginStyleFormItem = styled(Form.Item)`
 `;
 
 function Login() {
+  const navigate = useNavigate();
   const [failMsg, setFailMsg] = useState(false);
+
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
 
@@ -50,6 +52,8 @@ function Login() {
         axios.defaults.headers.common[
           'Authorization'
         ] = `Bearer ${accessToken}`;
+
+        navigate('/main');
       })
       .catch(error => {
         console.log(error);
